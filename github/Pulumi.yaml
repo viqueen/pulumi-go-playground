@@ -1,0 +1,3 @@
+name: github-bootstrap
+runtime: go
+description: Bootstrap project for the pulumi-github Go SDK

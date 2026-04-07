@@ -1,0 +1,3 @@
+name: kubernetes-bootstrap
+runtime: go
+description: Bootstrap project for the pulumi-kubernetes Go SDK
