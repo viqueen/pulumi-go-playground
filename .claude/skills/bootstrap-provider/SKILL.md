@@ -101,6 +101,7 @@ If the argument is missing, ask the user which provider to bootstrap and stop.
              stack-name: dev
              work-dir: <provider>
              cloud-url: file://~
+             upsert: true
    ```
    - Scope `paths` to the provider folder.
 

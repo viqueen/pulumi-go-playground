@@ -25,3 +25,4 @@ jobs:
           stack-name: dev
           work-dir: cloudflare
           cloud-url: file://~
+          upsert: true
