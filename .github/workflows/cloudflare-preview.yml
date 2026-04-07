@@ -28,3 +28,14 @@ jobs:
           work-dir: cloudflare
           cloud-url: file://~
           upsert: true
+
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: cloudflare/go.mod
+      - name: go build
+        working-directory: cloudflare
+        run: go build -v -o dist/infra .

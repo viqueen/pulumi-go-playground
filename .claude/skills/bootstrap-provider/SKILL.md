@@ -104,8 +104,20 @@ If the argument is missing, ask the user which provider to bootstrap and stop.
              work-dir: <provider>
              cloud-url: file://~
              upsert: true
+
+     build:
+       runs-on: ubuntu-24.04
+       steps:
+         - uses: actions/checkout@v4
+         - uses: actions/setup-go@v5
+           with:
+             go-version-file: <provider>/go.mod
+         - name: go build
+           working-directory: <provider>
+           run: go build -v -o dist/infra .
    ```
    - Scope `paths` to the provider folder.
+   - The `build` job runs in parallel with `preview` so their durations can be compared as a benchmark of `pulumi preview` overhead vs. a plain `go build`.
 
 10. **Report** to the user: the folder created, the version pinned, the workflow path, and that the next CI run will preview it.
 
