@@ -38,4 +38,4 @@ jobs:
           go-version-file: kubernetes/go.mod
       - name: go build
         working-directory: kubernetes
-        run: go build -v -o dist/infra .
+        run: go build -a -v -o dist/infra .

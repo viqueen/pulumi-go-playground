@@ -38,4 +38,4 @@ jobs:
           go-version-file: cloudflare/go.mod
       - name: go build
         working-directory: cloudflare
-        run: go build -v -o dist/infra .
+        run: go build -a -v -o dist/infra .

@@ -38,4 +38,4 @@ jobs:
           go-version-file: github/go.mod
       - name: go build
         working-directory: github
-        run: go build -v -o dist/infra .
+        run: go build -a -v -o dist/infra .
