@@ -1,0 +1,41 @@
+name: kubernetes preview
+
+on:
+  pull_request:
+    paths:
+      - "kubernetes/**"
+      - ".github/workflows/kubernetes-preview.yml"
+  push:
+    branches: [main]
+    paths:
+      - "kubernetes/**"
+      - ".github/workflows/kubernetes-preview.yml"
+
+jobs:
+  preview:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: kubernetes/go.mod
+      - uses: pulumi/actions@v6
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
+        with:
+          command: preview
+          stack-name: dev
+          work-dir: kubernetes
+          cloud-url: file://~
+          upsert: true
+
+  build:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-go@v5
+        with:
+          go-version-file: kubernetes/go.mod
+      - name: go build
+        working-directory: kubernetes
+        run: go build -v -o dist/infra .
