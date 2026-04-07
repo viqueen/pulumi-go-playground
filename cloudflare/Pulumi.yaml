@@ -1,0 +1,3 @@
+name: cloudflare-bootstrap
+runtime: go
+description: Bootstrap project for the pulumi-cloudflare Go SDK
