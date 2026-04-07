@@ -20,6 +20,8 @@ jobs:
         with:
           go-version-file: cloudflare/go.mod
       - uses: pulumi/actions@v6
+        env:
+          PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
         with:
           command: preview
           stack-name: dev

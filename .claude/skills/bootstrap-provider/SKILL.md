@@ -96,6 +96,8 @@ If the argument is missing, ask the user which provider to bootstrap and stop.
            with:
              go-version-file: <provider>/go.mod
          - uses: pulumi/actions@v6
+           env:
+             PULUMI_CONFIG_PASSPHRASE: ${{ secrets.PULUMI_CONFIG_PASSPHRASE }}
            with:
              command: preview
              stack-name: dev
